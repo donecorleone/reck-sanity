@@ -1,0 +1,53 @@
+---
+import { urlFor } from "../utils/image";
+import { getService } from "../utils/sanity";
+import { getImage } from "astro:assets";
+
+const serviceData = await getService();
+
+---
+
+<div class="service-section">
+  
+  {serviceData.map((service) => (
+    <div class="service-container">    
+      {service.serviceImage && <img src={urlFor(service.serviceImage).url()} alt={service.title} width="80" height="80" decoding="async" loading="lazy"/>}
+      <h3>{service?.title || "No title provided."}</h2>
+      <p>{service?.description || "No description provided."}</p>
+    </div>
+  ))}
+</div>
+
+<style>
+
+  .service-section {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10vh 6vw 20vh 6vw;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .service-container {
+    max-width: 400px;
+  }
+
+  img {
+    max-width: 50px;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 20px 0 15px 0;
+  }
+
+  p {
+    font-size: 18px;
+    color: rgb(34, 34, 34);
+  }
+
+
+</style>

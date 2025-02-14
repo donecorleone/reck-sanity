@@ -1,0 +1,133 @@
+---
+import { urlFor } from "../utils/image";
+import { getSlider } from "../utils/sanity";
+
+
+const sliderData = await getSlider();
+
+
+
+---
+
+<div class="slider-wrapper">
+  <div class="slider-container">
+      <div class="slider">
+          <div class="slide-track" id="scroll-track-left">
+              <!-- Deine 5 Slides -->
+              <div class="slide">
+                {sliderData.sliderImage && (
+                  <img src={urlFor(sliderData.sliderImage).url()} alt="logo 1" width="400" height="250" decoding="async" loading="lazy" />
+                )}
+              </div>
+
+              <div class="slide">
+                {sliderData.sliderImage2 && (
+                  <img src={urlFor(sliderData.sliderImage2).url()} alt="logo 2" width="400" height="250" decoding="async" loading="lazy"/>
+                )}
+              </div>
+
+              <div class="slide">
+                {sliderData.sliderImage3 && (
+                  <img src={urlFor(sliderData.sliderImage3).url()} alt="logo 3" width="400" height="250" decoding="async" loading="lazy" />
+                )}
+              </div>
+
+              <div class="slide">
+                {sliderData.sliderImage4 && (
+                  <img src={urlFor(sliderData.sliderImage4).url()} alt="logo 4" width="400" height="250" decoding="async" loading="lazy"/>
+                )} 
+              </div> 
+
+              <div class="slide">
+                {sliderData.sliderImage5 && (
+                  <img src={urlFor(sliderData.sliderImage5).url()} alt="logo 5" width="400" height="250" decoding="async" loading="lazy"/>
+                )}
+              </div>
+              
+              <!-- Duplizierte Slides -->
+              <div class="slide">
+                {sliderData.sliderImage && (
+                  <img src={urlFor(sliderData.sliderImage).url()} alt="logo 1" width="400" height="250" decoding="async" loading="lazy"/>
+                )}
+              </div>
+
+              <div class="slide">
+                {sliderData.sliderImage2 && (
+                  <img src={urlFor(sliderData.sliderImage2).url()} alt="logo 2" width="400" height="250" decoding="async" loading="lazy" />
+                )}
+              </div>
+
+              <div class="slide">
+                {sliderData.sliderImage3 && (
+                  <img src={urlFor(sliderData.sliderImage3).url()} alt="logo 3" width="400" height="250" decoding="async" loading="lazy"/>
+                )}
+              </div>
+
+              <div class="slide">
+                {sliderData.sliderImage4 && (
+                  <img src={urlFor(sliderData.sliderImage4).url()} alt="logo 4" width="400" height="250" decoding="async" loading="lazy"/>
+                )} 
+              </div> 
+
+              <div class="slide">
+                {sliderData.sliderImage5 && (
+                  <img src={urlFor(sliderData.sliderImage5).url()} alt="logo 5" width="400" height="250" decoding="async" loading="lazy"/>
+                )}
+              </div>
+          </div>
+      </div>
+  </div> 
+</div>
+
+<style>
+
+.slider-wrapper {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 25%, #000 75%, transparent);
+}
+
+.slider {
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+  
+}
+
+.slide-track {
+  animation: scroll 15s linear infinite;
+  display: flex;
+  width: 2000px;
+}
+
+#scroll-track-left {
+    animation: scroll 15s linear infinite reverse;
+} 
+
+@keyframes scroll {
+         0% {
+            transform: translateX(-1750px);
+        }
+        100% {
+            transform: translate(0);
+        }
+}
+
+.slide {
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  min-width: 350px;
+  padding-left: 10px;
+  padding-right: 10px;
+  
+}
+
+@media screen and (max-width) {
+  .slide {
+    min-width: 350;
+  }
+}
+
+
+
+</style>

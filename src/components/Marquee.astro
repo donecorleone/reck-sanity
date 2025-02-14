@@ -1,0 +1,71 @@
+---
+import { getHeader } from "../utils/sanity";
+
+const headerData = await getHeader();
+const marqueeWords = headerData?.marquee || ["Platzhalter"];
+
+let marquee;
+
+// Wenn nur ein Wort vorhanden ist, wiederhole es 20 Mal
+if (marqueeWords.length === 1) {
+  marquee = Array(40).fill(marqueeWords[0]).join(" ⸱ ");
+} else {
+  // Wenn mehrere Wörter vorhanden sind, wiederholen und abwechseln
+  marquee = Array(40)
+    .fill(marqueeWords)
+    .flat()
+    .slice(0, 40) // Begrenze auf 20 Wörter
+    .join(" ⸱ ");
+}
+---
+
+<div class="marquee-container">
+  <div class="marquee">
+    <span>
+      {marquee} &#11825; {marquee}
+    </span>
+  </div>
+</div>
+
+
+
+  <style>
+          .marquee-container {
+          height: 30px;
+          width: 100%;
+          position: absolute;
+          z-index: 10;
+          border-bottom: 1px solid white;   
+
+        }
+
+        .marquee {
+        width: 100vw;
+        height: auto;
+        display: grid;
+        margin: 0 auto;
+        white-space: nowrap;
+        overflow: hidden;
+        z-index: 1;
+        }
+        .marquee span {
+        font-family: 'Telegraf', sans-serif;
+        font-weight: 500;
+        color: #fff;
+        font-size: 20px;
+        text-transform: uppercase;
+        display: inline-block;
+        animation: marquee-animation 120s linear infinite;
+        }
+
+        @keyframes marquee-animation {
+        0% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(-80%, 0);
+        }
+        }
+
+      
+  </style>

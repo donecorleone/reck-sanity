@@ -1,0 +1,71 @@
+---
+import { getFooter } from "../utils/sanity"; 
+import { urlFor } from "../utils/image";
+
+// Abrufen der Footer-Daten
+const footerData = await getFooter();
+const footer = footerData[0]; 
+---
+
+<div 
+    class='relative h-[600px]'
+    style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}
+>
+    <div class='relative h-[calc(100vh+600px)] -top-[100vh] bg-black'>
+        <div class='h-[600px] sticky top-[calc(100vh-600px)]'>
+            <div class='h-full w-full'>
+                <div class="wrapper flex flex-wrap justify-between m-[4%] md:mx-[12%] pt-[150px]">
+                    <div class="flex flex-col text-white pb-[50px]">
+                        <h3>{footer?.headline}</h3>
+                        <ul>
+                            {footer?.company?.map((company) => (
+                                <li>{company}</li>
+                            ))}
+                        </ul>
+                        </div>
+                    <div class="flex flex-col text-white pb-[50px]">
+                        <h3>{footer?.headline2}</h3>
+                        <ul>
+                            {footer?.info?.map((info) => (
+                                <li>{info}</li>
+                            ))}
+                        </ul>
+                    </div>    
+        
+                    <div class="flex flex-col text-white pb-[50px]">
+                        <h3>{footer?.headline3}</h3>
+                        <ul>
+                            {footer?.links?.map((link) => (
+                                <li><a href={link.url}>{link.title}</a></li>
+                            ))}
+                        </ul>
+                    </div> 
+
+                    <div class="flex flex-col text-white pb-[50px]">
+                        <h3>{footer?.headline4}</h3>    
+                        {footer?.socialImage && (
+                            <img 
+                                src={urlFor(footer.socialImage).url()} 
+                                alt="Social Image"
+                            />
+                        )}
+                    </div>
+                    <span class="spacer h-[100px] w-full pb-[50px]"></span>
+                    <span class="h-[1px] w-full bg-[#d3d3d3] bot"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    h3 {
+        font-size: 24px;
+        font-weight: 600;
+        padding-bottom: 20px;
+    }
+
+
+
+</style>

@@ -1,0 +1,47 @@
+---
+export const prerender = false; 
+
+import type { InferGetStaticParamsType } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import { getPage, getPages } from "../../utils/sanity";
+import Hero from "../../components/Hero.astro";
+import Info from "../../components/Info.astro";
+import Service from "../../components/Service.astro";
+import Category from "../../components/Category.astro";
+
+export async function getStaticPaths() {
+  const pages = await getPages();
+  return pages.map((page) => ({
+    params: { slug: page.slug.current },
+  }));
+}
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+const { slug } = Astro.params as Params;
+
+const page = await getPage(slug);
+const sections = page?.sections || []; // Reihenfolge bleibt erhalten
+---
+
+<Layout title={page.title!}>
+  <div class="wrapper">
+    <main class="app">
+      {sections.map((section) => (
+        section._type === "hero" && <Hero key={section._id} section={section} />
+        || section._type === "info" && <Info key={section._id} section={section} />
+        || section._type === "service" && <Service key={section._id} section={section} />
+        || section._type === "category" && <Category key={section._id} section={section} />
+      ))}
+      <div>
+        <h2>{page.title}</h2>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  h1 { font-size: 8vw; line-height: 1; }
+  h2 { font-size: 40px; }
+  span { font-size: 24px; }
+  p { font-size: 22px; color: black; }
+</style>

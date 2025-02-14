@@ -1,0 +1,51 @@
+---
+import { urlFor } from "../utils/image";
+import { getCategories } from "../utils/sanity";
+import { getImage } from "astro:assets";
+import categoryImage from "../assets/category-img.webp";
+
+const categoriesData = await getCategories();
+---
+
+<div class="category-section">
+  {categoriesData.map((category) => (
+    <div class="category-container">    
+      {category.imgUrl && <img src={urlFor(category.imgUrl).url()} alt={category.title} width="500" height="332" decoding="async" loading="lazy" />}
+      <p>{category?.title}</p>
+    </div>
+  ))}
+</div>
+
+<style>
+  .category-section {
+    display: grid;
+    grid-template-columns: 3;
+    gap: 1.5vw;
+    justify-content: center;
+    padding: 0 2vw;
+  }
+  .category-container {
+    text-align: center;
+    transition: transform 0.2s ease;
+    max-width: 380px;
+  }
+
+  .category-container:hover {
+    transform: translateY(-5px); /* Hover-Effekt */
+  }
+
+  .category-container img {
+    width: 100%;
+    height: auto;
+   
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    color: #000;
+    padding-top: 15px;
+    padding-bottom: 25px;
+  }  
+</style>

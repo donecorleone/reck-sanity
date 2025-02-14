@@ -1,0 +1,51 @@
+---
+import Card from "../components/Card.astro";
+import Layout from "../layouts/Layout.astro";
+import { getPosts} from "../utils/sanity";
+
+const posts = await getPosts();
+---
+
+<Layout title="our projects">
+
+<div class="content-container">
+    <h1>Cases</h1>
+</div>    
+<section>
+    { posts.map((post) => <Card post={post} />) }
+</section> 
+</Layout>
+
+<style>
+
+ h1 {
+    font-size: 80px;
+}
+
+.content-container {
+  padding: 2rem 1rem 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+@media (min-width: 1024px) {
+  section {
+    padding: 4rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  .content-container {
+    padding: 4rem 2rem;
+  }
+}
+
+</style>

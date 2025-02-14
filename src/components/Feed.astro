@@ -1,0 +1,71 @@
+<div class="feed-container">
+    <div id="instagram-feed"></div>
+</div>
+
+<style>
+    #instagram-feed {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+    #instagram-feed img {
+        width: 100%;
+        min-width: 200px;
+        min-height: 200px;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+</style>
+
+<script>
+    async function loadInstagramFeed() {
+    const accessToken = "IGAANEIitVIeBBZAFBIRHAxS25SUHdRRkpCdXlnOGZAtTUpBZAXQ3eHFjcmtoZAUxfeDAzVHVDUzQ5R25YZAWttckNYdkw3dUhjX0I1aS1ndFc5aWlQb0cydDNHUTR3dlJFa18wMmc5Qjg5U0lkVTJkTG5JcUNaRzZA3aXhvM2k2RDQtNAZDZD";
+    const url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink&access_token=${accessToken}`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Fehler beim Abrufen der Daten");
+
+        const data = await response.json();
+        
+
+        const feed = document.getElementById("instagram-feed");
+        if (!feed) {
+            console.error("Container für Instagram-Feed nicht gefunden!");
+            return;
+        }
+
+        // @ts-ignore
+        const imagePosts = data.data.filter(post => post.media_type === "IMAGE" || post.media_type === "CAROUSEL_ALBUM").slice(0, 9);
+
+        
+
+        // @ts-ignore
+        imagePosts.forEach(post => {
+            const img = document.createElement("img");
+            img.src = post.media_url;
+            img.alt = "Instagram Post";
+            img.loading = "lazy";
+            img.style.width = "100%";
+            img.style.maxWidth = "200px";
+            img.style.height = "200px";
+
+            const link = document.createElement("a");
+            link.href = post.permalink;
+            link.target = "_blank";
+            link.appendChild(img);
+
+            feed.appendChild(link);
+        });
+
+    } catch (error) {
+        console.error("Fehler beim Laden des Instagram-Feeds:", error);
+    }
+}
+
+loadInstagramFeed();
+
+
+</script>

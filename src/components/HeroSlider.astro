@@ -1,0 +1,108 @@
+---
+import { getHero } from "../utils/sanity";
+import { urlFor } from "../utils/image";
+import heroBackground from "../assets/hero-image1.jpg";
+import heroBackground2 from "../assets/hero-image2.jpg";
+import heroBackground3 from "../assets/hero-image3.jpg";
+import { getImage } from "astro:assets";
+
+const optimizedBackground = await getImage({src: heroBackground, format: 'avif'})
+const optimizedBackground2 = await getImage({src: heroBackground2, format: 'avif'})
+const optimizedBackground3 = await getImage({src: heroBackground3, format: 'avif'})
+
+
+const heroData = await getHero();
+const headline = heroData?.headline || "Standard-Headline"; // Fallback
+const subheadline = heroData?.subheadline || "Standart-Subheadline"; 
+const heroImage = heroData?.heroImage
+const desktopHeroImage = heroData?.desktopHeroImage?.url;
+const mobileHeroImage = heroData?.mobileHeroImage
+
+---
+<div class="hero-wrapper h-screen min-w-[100vw] bg-black">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide bg-green-500" id="slide-1" style={`background-image: url(${optimizedBackground.src});`}>
+                <div class="hero-content">
+                    <h2>{headline}</h2>
+                    <p>Top Marken</p>
+                    <a href="" class="button">EINBLICK </a>
+                </div>
+            </div>
+            <div class="swiper-slide bg-slate-500" id="slide-2" style={`background-image: url(${optimizedBackground2.src});`}>
+                <div class="hero-content">
+                    <h2>SEHEN, LIEBEN,<br /> ERLEBEN.</h2>
+                    <p>Top Marken</p>
+                    <a href="" class="button">EINBLICK </a>
+                </div>
+            </div>
+            <div class="swiper-slide bg-blue-500" id="slide-3" style={`background-image: url(${optimizedBackground3.src});`}>
+                <div class="hero-content">
+                    <h2>SEHEN, LIEBEN,<br /> ERLEBEN.</h2>
+                    <p>Top Marken</p>
+                    <a href="" class="button">EINBLICK </a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <!-- <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div> -->
+    </div>
+</div>
+
+<style>
+    .swiper,
+    .swiper-wrapper
+    {
+        height: 100%;
+        width: 100%;
+        
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        padding-bottom: 10vh;
+        padding-left: 2%;
+        color: white;
+        background: rgb(0,0,0);
+        background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+        background-image: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .swiper-slide::before {
+        content: "";
+        position: absolute;
+        background: rgb(0,0,0);
+        background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        z-index: 2;
+    }
+
+    .hero-content h2 {
+        font-size: 85px;
+        line-height: 1.2;
+    }
+
+
+    
+
+    
+
+   
+</style>
+
+<script src="../libs/slider_simple.js"></script>

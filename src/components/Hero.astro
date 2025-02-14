@@ -1,0 +1,36 @@
+---
+import { getHero } from "../utils/sanity";
+import heroBackground from "../assets/hero-image1.jpg";
+import heroBackground2 from "../assets/hero-image2.jpg";
+import heroBackground3 from "../assets/hero-image3.jpg";
+import { getImage } from "astro:assets";
+
+const optimizedBackground = await getImage({src: heroBackground, format: 'avif'})
+const optimizedBackground2 = await getImage({src: heroBackground2, format: 'avif'})
+const optimizedBackground3 = await getImage({src: heroBackground3, format: 'avif'})
+
+const { section } = Astro.props; 
+
+
+---
+
+<div class="hero-section h-[70vh] w-full bg-red-400 flex flex-col justify-center items-center gap-5">
+    <h1>GOBERT MODEHAUS</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, architecto! Delectus similique quidem non et, totam illum obcaecati rem voluptates explicabo impedit tempora sequi.</p>
+    <button><a href="">PRODUKTE</a></button>
+</div>
+
+
+<style>
+
+    h1 {
+        color: white;
+    }
+
+    p {
+        color: white;
+    }
+
+</style>
+
+<script src="../libs/slider_simple.js"></script>

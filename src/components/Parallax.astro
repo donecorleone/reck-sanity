@@ -1,0 +1,96 @@
+---
+import { getImage } from "astro:assets";
+import parallaxBackground from "../assets/hero-image2.webp";
+
+const optimizedBackground = await getImage({src: parallaxBackground, format: 'webp'})
+---
+
+<div class="wrapper">
+  <div class="parallax-container" style={`background-image: url(${optimizedBackground.src});`}>
+    <div class="content-wrapper">
+      <div class="content">
+        <h2>300</h2>
+        <p>Brillen Designs für Sie vor ort</p>
+      </div>
+      <div class="content">
+          <h2>6</h2>
+          <p>Kontaktlinsenhersteller</p>
+        </div>
+        <div class="content">
+          <h2>35</h2>
+          <p>Jahre geballte Erfahrung</p>
+        </div>
+        <div class="content">
+          <h2>2018</h2>
+          <p>Ihr Optiker in Weingarten</p>
+        </div>
+    </div>
+  </div>
+</div>
+
+  <style>
+
+    .wrapper {
+        margin: 0 4vw 10vh 4vw;
+        z-index: 5;
+    }
+    .parallax-container {
+  position: relative;
+  
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: fit-content;
+  gap: 2vw;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.parallax-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  filter: blur(5px); /* Leichter Blur-Effekt */
+  z-index: 0;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 8vw;
+  align-items: center;
+}
+
+.content {
+  position: relative;
+  z-index: 1; /* Content über dem Overlay */
+  text-align: left;
+}
+
+h2 {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+p{
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .content-wrapper {
+    align-items: center;
+    gap: 30px;
+   
+  }
+}
+
+  </style>

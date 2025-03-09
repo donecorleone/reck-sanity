@@ -15,9 +15,9 @@ const { section } = Astro.props;
 ---
 
 <div class="hero-section h-[70vh] w-full bg-red-400 flex flex-col justify-center items-center gap-5">
-    <h1>GOBERT MODEHAUS</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, architecto! Delectus similique quidem non et, totam illum obcaecati rem voluptates explicabo impedit tempora sequi.</p>
-    <button><a href="">PRODUKTE</a></button>
+    <h1>{section.headline}</h1>
+    <p>{section.subheadline}</p>
+    <button><a href="">{section.cta}</a></button>
 </div>
 
 

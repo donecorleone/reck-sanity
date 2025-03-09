@@ -21,14 +21,14 @@ export const infoType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "headline",
+      name: "InfoHeadline",
       title: "Headline",
       type: "string",
     }),
     defineField({
-      name: "infoText",
-      title: "Info Text",
-      type: "text",
+      name: "infoBody",
+      title: "Body",
+      type: "blockContent",
     }),
     defineField({
       name: "cta",

@@ -41,8 +41,8 @@ export async function getPage(slug: string): Promise<Page> {
           "heroImageUrl": heroImage.asset->url,
 
           // Info-Section
-          headline,
-          infoText,
+          infoHeadline,
+          infoBody,
           cta,
           "infoImageUrl": infoImage.asset->url,
 
@@ -83,8 +83,8 @@ export async function getIndexPage(): Promise<IndexPageData> {
         "info": *[_type == "info" && slug.current == "info-startseite"][0]{  
           _type,
           _id,
-          headline,
-          infoText,
+          infoHeadline,
+          infoBody,
           cta,
           "infoImage": infoImage.asset->url
         }
@@ -143,7 +143,7 @@ export interface Post {
   slug: Slug;
   excerpt?: string;
   mainImage?: ImageAsset;
-  body: PortableTextBlock[];
+  postBody: PortableTextBlock[];
 }
 
 export interface Page {
@@ -173,7 +173,7 @@ export interface Info {
   _id: string;
   headline?: string;
   subheadline?: string;
-  text?: string;
+  infoBody: PortableTextBlock[];
   cta?: string;
   infoImage?: ImageAsset;
 }
@@ -220,6 +220,6 @@ export interface Footer {
 }
 
 export interface IndexPageData {
-  hero?: Hero; 
-  info?: Info; 
+  hero?: Hero;
+  info?: Info;
 }

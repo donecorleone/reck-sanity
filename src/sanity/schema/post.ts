@@ -35,7 +35,7 @@ export default defineType({
       },
     }),
     defineField({
-      name: "body",
+      name: "postBody",
       title: "Body",
       type: "blockContent",
     }),

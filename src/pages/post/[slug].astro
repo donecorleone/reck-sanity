@@ -36,9 +36,9 @@ const post = await getPost(slug);
           </div>
       </div>
 
-      {(post.body &&
+      {(post.postBody &&
         <div class="post-content">
-          <PortableText value={post.body} />
+          <PortableText value={post.postBody} />
         </div> || "Hello World"
       )}
 

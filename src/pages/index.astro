@@ -2,6 +2,7 @@
 import { getIndexPage } from "../utils/sanity";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import HeroSlider from "../components/HeroSlider.astro";
 import Info from "../components/Info.astro";
 import Bento from "../components/Bento.astro";
 import LogoSwipes from "../components/LogoSwipes.astro";
@@ -14,11 +15,9 @@ const page = await getIndexPage();
 <Layout title="Startseite">
   <div class="wrapper">
     <main>
-      {page.hero && <Hero section={page.hero} />}  
+      {page.hero && <HeroSlider section={page.hero} />}  
       {page.info && <Info section={page.info} />} 
-      <Bento />
-      <LogoSwipes />
-      <Feed />
+      
  
     </main>
   </div>

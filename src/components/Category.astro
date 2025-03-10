@@ -2,32 +2,34 @@
 import { urlFor } from "../utils/image";
 import { getCategories } from "../utils/sanity";
 import { getImage } from "astro:assets";
-import categoryImage from "../assets/category-img.webp";
+
 
 const categoriesData = await getCategories();
 ---
 
-<div class="category-section">
+<div class="category-section container mx-auto">
   {categoriesData.map((category) => (
     <div class="category-container">    
-      {category.imgUrl && <img src={urlFor(category.imgUrl).url()} alt={category.title} width="500" height="332" decoding="async" loading="lazy" />}
-      <p>{category?.title}</p>
+      {category.imgUrl && <img src={urlFor(category.imgUrl).url()} alt={category.title} width="1920" height="1440" decoding="async" loading="lazy" />}
+      <h3>{category?.title}</h3>
     </div>
   ))}
-</div>
+</div> 
+
+
+
 
 <style>
   .category-section {
     display: grid;
-    grid-template-columns: 3;
-    gap: 1.5vw;
-    justify-content: center;
-    padding: 0 2vw;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+    
   }
   .category-container {
     text-align: center;
     transition: transform 0.2s ease;
-    max-width: 380px;
+    max-width: 300px;
   }
 
   .category-container:hover {
@@ -40,7 +42,7 @@ const categoriesData = await getCategories();
    
   }
 
-  p {
+  h3 {
     font-size: 18px;
     font-weight: 800;
     letter-spacing: 2.5px;

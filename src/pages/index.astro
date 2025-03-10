@@ -7,7 +7,9 @@ import Info from "../components/Info.astro";
 import Bento from "../components/Bento.astro";
 import LogoSwipes from "../components/LogoSwipes.astro";
 import Feed from "../components/Feed.astro";
-import Embed from "../components/Embed.astro";
+import Category from "../components/Category.astro";
+import ImgSlider from "../components/ImgSlider.astro"
+
 
 const page = await getIndexPage(); 
 ---
@@ -17,6 +19,7 @@ const page = await getIndexPage();
     <main>
       {page.hero && <HeroSlider section={page.hero} />}  
       {page.info && <Info section={page.info} />} 
+     
       
  
     </main>

@@ -87,7 +87,9 @@ export async function getIndexPage(): Promise<IndexPageData> {
           infoBody,
           cta,
           "infoImage": infoImage.asset->url
-        }
+        },
+
+        
       }
     `
   );

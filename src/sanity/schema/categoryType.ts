@@ -33,9 +33,39 @@ export const categoryType = defineType({
       },
     }),
     defineField({
+      name: "leistung",
+      title: "Leistungsübersicht",
+      type: "array",
+      of: [
+        defineField({
+          type: "object",
+          name: "leistungsKategorie",
+          fields: [
+            defineField({
+              name: "titel",
+              type: "string",
+              title: "Titel",
+            }),
+            defineField({
+              name: "unterpunkte",
+              type: "array",
+              title: "Unterpunkte",
+              of: [{ type: "string" }],
+            }),
+          ],
+        }),
+      ],
+    }),
+    defineField({
       name: "categoryBody",
       title: "Body",
       type: "blockContent",
+    }),
+    defineField({
+      name: "categoryLogos",
+      title: "Kategorie Logo",
+      type: "array",
+      of: [{ type: "image" }],
     }),
   ],
 });

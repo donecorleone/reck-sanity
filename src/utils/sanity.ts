@@ -167,14 +167,32 @@ export interface Info {
   infoImage?: ImageAsset;
 }
 
+export interface Teistimonial {
+  _type: "testimonial";
+  _id: string;
+  title: string;
+  kunde?: string;
+  Firma?: string;
+  rezession?: string;
+  kundenImage?: ImageAsset;
+}
+
 export interface Category {
   _type: "category";
-  _id: string; // ID hinzufügen
-  title: string; // Titel hinzufügen
+  _id: string;
+  title: string;
   description?: string;
   imgUrl?: ImageAsset;
+  categoryLogos?: ImageAsset[];
   slug: Slug;
   categoryBody: PortableTextBlock[];
+  leistung: LeistungsKategorie[];
+}
+
+interface LeistungsKategorie {
+  _key: string;
+  titel: string;
+  unterpunkte: string[];
 }
 
 export interface Service {

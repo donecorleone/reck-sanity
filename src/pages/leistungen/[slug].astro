@@ -3,11 +3,13 @@
 export const prerender = true; 
 
 import type { InferGetStaticParamsType } from "astro";
-import { PortableText } from "astro-portabletext";
+import {PortableText} from 'astro-portabletext'
 import Layout from "../../layouts/Layout.astro";
 import { formatDate } from "../../utils";
 import { urlFor } from "../../utils/image";
 import { getCategory, getCategories } from "../../utils/sanity";
+
+
 
 export async function getStaticPaths() {
   const categories = await getCategories();
@@ -20,34 +22,155 @@ type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 const { slug } = Astro.params as Params;
 
 const category = await getCategory(slug);
+
+
 ---
 
 <Layout title={category.title!}>
   <div class="wrapper">
     <main class="app">
       
-      <div class="hero mt-[200px]">
-          <div class="hero_wrapper" transition:name="fade">
-              
-              <div class="hero_title">
-                  <h1>{category.title}</h1>
-              </div>
-             
+      <!-- Hero Section with Fullscreen Image -->
+      <div class="hero-fullscreen" style={category.imgUrl ? `background-image: url(${urlFor(category.imgUrl).url()})` : ''}>
+        <div class="hero-content">
+          <div class="hero_title">
+            <h1>{category.title}</h1>
           </div>
+        </div>
       </div>
 
-      {(category.categoryBody &&
-        <div class="post-content">
-          <PortableText value={category.categoryBody} />
-        </div> || "Hello World"
-      )}
+      <!-- Content Section -->
+      <div class="content-section">
+        {(category.categoryBody &&
+          <div class="post-content mb-14">
+            <PortableText value={category.categoryBody} />
+          </div> || "Hello World"
+        )}
+        {(category.leistung) && category.leistung.length > 0 && (
+          <div class="leistungen-section">
+            <h2 class="mb-10">Unsere Leistungen</h2>
+            <div class="leistungen-grid">
+              {category.leistung.map((leistungsKategorie) => (
+                <div class="leistung-kategorie">
+                  <h3 class="mb-4">{leistungsKategorie.titel}</h3>
+                  {(leistungsKategorie.unterpunkte) && leistungsKategorie.unterpunkte.length > 0 && (
+                    <ul class="unterpunkte-list mb-4">
+                      {leistungsKategorie.unterpunkte.map((unterpunkt) => (
+                        <li class="unterpunkt-item mb-3">{unterpunkt}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
 
-  </main>
-</div>
+      <!-- Leistungen Section -->
+        
+    
+      <!-- Logo Grid Section -->
+      {Array.isArray(category.categoryLogos) && category.categoryLogos.length > 0 && (
+        <div class="logo-section">
+          <h2>Unsere Partner</h2>
+          <div class="logo-grid">
+            {category.categoryLogos.map((logo) => (
+              <div class="logo-item">
+                {logo && (
+                  <img
+                    src={urlFor(logo).url()}
+                    alt={category.title}
+                    class="object-cover w-full h-48 mt-2"
+                    width="200"
+                    height="auto"
+                    decoding="async"
+                    loading="lazy"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      
+
+    </main>
+  </div>
 
 </Layout>
 
 <style>
+  /* Hero Fullscreen Styles */
+  .hero-fullscreen {
+    height: 50vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
+
+  .hero-content {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    max-width: 80%;
+  }
+
+  /* Content Section Styles */
+  .content-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* Logo Grid Section Styles */
+  .logo-section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 2rem;
+  }
+
+  .logo-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+  }
+
+  .logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .logo-item:hover {
+    transform: scale(1.05);
+  }
+
+  .logo-item img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Typography */
+
+ 
   h1 {
     font-size: 8vw;
     line-height: 1;
@@ -55,6 +178,10 @@ const category = await getCategory(slug);
 
   h2 {
     font-size: 40px;
+  }
+
+  h3 {
+    font-size: 30px;
   }
   
   span {
@@ -64,5 +191,24 @@ const category = await getCategory(slug);
   p {
     font-size: 22px;
     color: black;
+  }
+
+  ul {
+  list-style-type: square; /* Alternativen: disc, circle, none */
+  padding-left: 50px;
+  }
+
+
+
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .logo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content {
+      max-width: 90%;
+    }
   }
 </style>

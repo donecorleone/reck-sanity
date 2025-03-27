@@ -24,7 +24,7 @@ const page = await getPage(slug);
 const sections = page?.sections || []; // Reihenfolge bleibt erhalten
 ---
 
-<Layout title={page.title!}>
+<Layout title="Meddl">
   <div class="wrapper">
     <main class="app">
       {sections.map((section) => (
@@ -35,7 +35,7 @@ const sections = page?.sections || []; // Reihenfolge bleibt erhalten
         || section._type === "slider" && <LogoSlider key={section._id} section={section} />
       ))}
       <div>
-        <h2>{page.title}</h2>
+        <!-- <h2>{page.title}</h2> -->
       </div>
     </main>
   </div>

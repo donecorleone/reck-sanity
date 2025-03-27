@@ -12,6 +12,8 @@ import { footerType } from "./footerType";
 import { sliderType } from "./sliderType";
 
 export const schemaTypes = [
+  page,
+  post,
   headerType,
   heroType,
   infoType,
@@ -19,8 +21,6 @@ export const schemaTypes = [
   serviceType,
   sliderType,
   footerType,
-  post,
-  page,
   blockContent,
   eventType,
   artistType,

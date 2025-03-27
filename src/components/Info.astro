@@ -1,5 +1,6 @@
 ---
 
+import { fade } from "astro:transitions";
 import { urlFor } from "../utils/image";
 import { PortableText } from "astro-portabletext";
 
@@ -7,19 +8,34 @@ import { PortableText } from "astro-portabletext";
 const { section } = Astro.props;
 
 
+
+
+
 ---
 
-<div class="container mx-auto h-fit p-[5%]">
+<div class="container mx-auto h-fit p-[5%]" id="text-container">
     {(section.infoBody &&
         <div class="post-content">
-          <PortableText value={section.infoBody} />
+          <PortableText value={section.infoBody} transition:animate="fade" />
         </div> || "Hello World"
       )}
 </div>
 
 
-<style>
+<style is:inline>
 
- 
+  h1, h2, h3 {
+    margin-bottom: 20px;
+  }
+
+
+ .post-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
 
 </style>
+
+<script>
+
+</script>

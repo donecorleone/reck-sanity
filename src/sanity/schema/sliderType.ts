@@ -6,6 +6,22 @@ export const sliderType = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "title",
+      title: "Slider Bezeichnung",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "sliderImage",
       title: "Slider Image",
       type: "image",

@@ -18,6 +18,21 @@ export async function getPost(slug: string): Promise<Post> {
   );
 }
 
+export async function getCategories(): Promise<Category[]> {
+  return await sanityClient.fetch(
+    groq`*[_type == "category" && defined(slug.current)] | order(_createdAt desc)`
+  );
+}
+
+export async function getCategory(slug: string): Promise<Category> {
+  return await sanityClient.fetch(
+    groq`*[_type == "category" && slug.current == $slug][0]`,
+    {
+      slug,
+    }
+  );
+}
+
 export async function getPages(): Promise<Page[]> {
   return await sanityClient.fetch(
     groq`*[_type == "page" && defined(slug.current)] | order(_createdAt desc)`
@@ -45,23 +60,7 @@ export async function getPage(slug: string): Promise<Page> {
           infoBody,
           cta,
           "infoImageUrl": infoImage.asset->url,
-
-          // Service-Section (Mehrere Services)
-          "services": services[]->{
-            _id,
-            title,
-            description,
-            "serviceImageUrl": serviceImage.asset->url
-          },
-
-          // Category-Section (Mehrere Kategorien)
-          "categories": categories[]->{
-            _id,
-            title,
-            description,
-            "imgUrl": imgUrl.asset->url
-          }
-        }
+  }
       }
     `,
     { slug }
@@ -112,13 +111,6 @@ export async function getInfo(): Promise<Info> {
 }
 
 // fetch category section data
-export async function getCategories(): Promise<Category[]> {
-  return await sanityClient.fetch(
-    groq`*[_type == "category"] | order(_createdAt desc)`
-  );
-}
-
-// fetch category section data
 export async function getService(): Promise<Service[]> {
   return await sanityClient.fetch(groq`*[_type == "service"]`);
 }
@@ -131,12 +123,7 @@ export async function getFooter(): Promise<Footer[]> {
   return await sanityClient.fetch(groq`*[_type == "footer"]`);
 }
 
-export type Section = Hero | Info | Service | Category;
-
-export interface Header {
-  _type: "header";
-  marquee?: string;
-}
+export type Section = Hero | Info | Service | Category | Slider;
 
 export interface Post {
   _type: "post";
@@ -187,6 +174,7 @@ export interface Category {
   description?: string;
   imgUrl?: ImageAsset;
   slug: Slug;
+  categoryBody: PortableTextBlock[];
 }
 
 export interface Service {
@@ -199,11 +187,17 @@ export interface Service {
 
 export interface Slider {
   _type: "slider";
+  _id: string;
   sliderImage?: ImageAsset;
   sliderImage2?: ImageAsset;
   sliderImage3?: ImageAsset;
   sliderImage4?: ImageAsset;
   sliderImage5?: ImageAsset;
+}
+
+export interface Header {
+  _type: "header";
+  marquee?: string;
 }
 
 export interface Footer {

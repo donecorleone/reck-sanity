@@ -21,8 +21,8 @@ const subheadline = heroData?.subheadline || "Standart-Subheadline";
     <div class="swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide bg-green-500" id="slide-1" style={`background-image: url(${optimizedBackground.src});`}>
-                <div class="hero-content">
-                    <h2>{headline}</h2>
+                <div class="hero-content container mx-auto px-[5%]">
+                    <h2 transition:name="fade">{headline}</h2>
                     <p>Top Marken</p>
                     <a href="" class="button">EINBLICK </a>
                 </div>
@@ -62,7 +62,6 @@ const subheadline = heroData?.subheadline || "Standart-Subheadline";
         justify-content: flex-start;
         align-items: flex-end;
         padding-bottom: 10vh;
-        padding-left: 2%;
         color: white;
         background: rgb(0,0,0);
         background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);

@@ -5,7 +5,7 @@ import { getSlider } from "../utils/sanity";
 
 const sliderData = await getSlider();
 
-
+const { section } = Astro.props;
 
 ---
 
@@ -83,15 +83,9 @@ const sliderData = await getSlider();
 
 .slider-wrapper {
   -webkit-mask-image: linear-gradient(to right, transparent, #000 25%, #000 75%, transparent);
+  overflow: hidden;
 }
 
-.slider {
-  margin: auto;
-  overflow: hidden;
-  position: relative;
-  width: auto;
-  
-}
 
 .slide-track {
   animation: scroll 15s linear infinite;
@@ -116,17 +110,21 @@ const sliderData = await getSlider();
   height: fit-content;
   display: flex;
   align-items: center;
+  justify-content: center;
   min-width: 350px;
+  height: 200px;
   padding-left: 10px;
   padding-right: 10px;
-  
+  border: 1px solid red;
 }
 
-@media screen and (max-width) {
-  .slide {
-    min-width: 350;
-  }
+img {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
 }
+
+
 
 
 

@@ -17,7 +17,7 @@ export const categoryType = defineType({
     }),
     defineField({
       name: "imgUrl",
-      title: "ImgUrl",
+      title: "Kategorie Image",
       type: "image",
       options: {
         hotspot: true,
@@ -31,6 +31,11 @@ export const categoryType = defineType({
         source: "title",
         maxLength: 96,
       },
+    }),
+    defineField({
+      name: "categoryBody",
+      title: "Body",
+      type: "blockContent",
     }),
   ],
 });

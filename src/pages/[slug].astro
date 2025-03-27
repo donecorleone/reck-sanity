@@ -2,12 +2,13 @@
 export const prerender = false; 
 
 import type { InferGetStaticParamsType } from "astro";
-import Layout from "../../layouts/Layout.astro";
-import { getPage, getPages } from "../../utils/sanity";
-import Hero from "../../components/Hero.astro";
-import Info from "../../components/Info.astro";
-import Service from "../../components/Service.astro";
-import Category from "../../components/Category.astro";
+import Layout from "../layouts/Layout.astro";
+import { getPage, getPages } from "../utils/sanity";
+import Hero from "../components/Hero.astro";
+import Info from "../components/Info.astro";
+import Service from "../components/Service.astro";
+import Category from "../components/Category.astro";
+import LogoSlider from "../components/LogoSlider.astro";
 
 export async function getStaticPaths() {
   const pages = await getPages();
@@ -31,6 +32,7 @@ const sections = page?.sections || []; // Reihenfolge bleibt erhalten
         || section._type === "info" && <Info key={section._id} section={section} />
         || section._type === "service" && <Service key={section._id} section={section} />
         || section._type === "category" && <Category key={section._id} section={section} />
+        || section._type === "slider" && <LogoSlider key={section._id} section={section} />
       ))}
       <div>
         <h2>{page.title}</h2>

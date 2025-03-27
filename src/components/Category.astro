@@ -1,35 +1,51 @@
 ---
 import { urlFor } from "../utils/image";
 import { getCategories } from "../utils/sanity";
-import { getImage } from "astro:assets";
+import type { Category} from "../utils/sanity";
+
 
 
 const categoriesData = await getCategories();
 ---
 
-<div class="category-section container mx-auto">
+<div class="category-section container mx-auto h-fit p-[5%]">
   {categoriesData.map((category) => (
-    <div class="category-container">    
-      {category.imgUrl && <img src={urlFor(category.imgUrl).url()} alt={category.title} width="1920" height="1440" decoding="async" loading="lazy" />}
-      <h3>{category?.title}</h3>
-    </div>
+    <a href={`/leistungen/${category.slug.current}`}>
+      <div class="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+  <div class="px-4 py-2">
+      <h3 class="text-xl font-bold text-gray-800 uppercase dark:text-white">{category?.title}</h3>
+  </div>
+
+  {category.imgUrl && <img src={urlFor(category.imgUrl).url()} alt={category.title} class="object-cover w-full h-48 mt-2" width="1920" height="1440" decoding="async" loading="lazy" />}
+</div>
+    </a>
   ))}
 </div> 
 
 
+  
+</div>
 
 
 <style>
-  .category-section {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    place-items: center;
-    
-  }
+ .category-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem; 
+  place-items: center; 
+}
+  
   .category-container {
     text-align: center;
     transition: transform 0.2s ease;
     max-width: 300px;
+    overflow: hidden;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
   }
 
   .category-container:hover {
@@ -49,5 +65,16 @@ const categoriesData = await getCategories();
     color: #000;
     padding-top: 15px;
     padding-bottom: 25px;
+    text-transform: uppercase;
   }  
+
+  @media screen and (max-width: 769px) {
+    .category-section {
+    
+    grid-template-columns: 1fr;
+    
+  }
+  }
+
+
 </style>

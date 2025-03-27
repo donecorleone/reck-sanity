@@ -47,6 +47,12 @@ export default defineType({
           to: [{ type: "category" }],
           title: "Kategorie-Baustein",
         },
+        {
+          name: "sliderSection",
+          type: "reference",
+          to: [{ type: "slider" }],
+          title: "Slider-Baustein",
+        },
       ],
     }),
   ],

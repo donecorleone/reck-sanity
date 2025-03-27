@@ -8,7 +8,9 @@ import Bento from "../components/Bento.astro";
 import LogoSwipes from "../components/LogoSwipes.astro";
 import Feed from "../components/Feed.astro";
 import Category from "../components/Category.astro";
-import ImgSlider from "../components/ImgSlider.astro"
+import Testimonial from "../components/Testimonial.astro";
+import Card from "../ui/Card.astro";
+import LogoSlider from "../components/LogoSlider.astro";
 
 
 const page = await getIndexPage(); 
@@ -17,11 +19,12 @@ const page = await getIndexPage();
 <Layout title="Startseite">
   <div class="wrapper">
     <main>
-      {page.hero && <HeroSlider section={page.hero} />}  
+      {page.hero && <HeroSlider section={page.hero} />}
+      <LogoSlider />
       {page.info && <Info section={page.info} />} 
-     
+      <Category />
+      <Testimonial />
       
- 
     </main>
   </div>
 </Layout>

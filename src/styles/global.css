@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.btn {
+  width: fit-content;
+  font-size: 1.1em;
+  cursor: pointer;
+  background-color: #2b3b6c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.4s;
+  padding: 10px 20px;
+  letter-spacing: 2px;
+}
+
+.btn:hover {
+  border-radius: 5px;
+  transform: translateY(-10px);
+  box-shadow:
+    0 7px 0 -2px #ead703,
+    0 15px 0 -4px #ce2c32,
+    0 16px 10px -3px #ce2c32;
+}
+
+.btn:active {
+  transition: all 0.2s;
+  transform: translateY(-5px);
+  box-shadow:
+    0 2px 0 -2px #f85959,
+    0 8px 0 -4px #39a2db,
+    0 12px 10px -3px #39a2db;
+}

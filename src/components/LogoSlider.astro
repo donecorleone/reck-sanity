@@ -9,7 +9,7 @@ const { section } = Astro.props;
 
 ---
 
-<div class="slider-wrapper">
+<div class="slider-wrapper mb-10">
   <div class="slider-container">
       <div class="slider">
           <div class="slide-track" id="scroll-track-left">
@@ -115,7 +115,6 @@ const { section } = Astro.props;
   height: 200px;
   padding-left: 10px;
   padding-right: 10px;
-  border: 1px solid red;
 }
 
 img {
@@ -125,7 +124,16 @@ img {
 }
 
 
+@media screen and (max-width: 769px) {
+  .slide {
+    min-width: fit-content;
+    height: 150px;
+  }
 
+  img {
+    width: 150px;
+  }
+}
 
 
 </style>

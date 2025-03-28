@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 
-
 import "./menu.css";
 
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const menuLinks = [
-  { path: "/", label: "Home" },
-  { path: "/work", label: "Work" },
-  { path: "/about", label: "About" },
-  { path: "/contact", label: "Contact" },
-  { path: "/lab", label: "Lab" },
+  { path: "/about", label: "Über Reck" },
+  { path: "/leistungen/sanitaer", label: "Sanitär" },
+  { path: "/leistungen/heizung", label: "Heizung" },
+  { path: "/leistungen/bower-door-messung", label: "Bower Door Messung" },
+  { path: "/leistungen/flaschner", label: "Flaschner" },
+  { path: "/leistungen/gebaeudetechnik", label: "Gebäudetechnik" },
 ];
 
 const Menu = () => {
@@ -59,7 +59,12 @@ const Menu = () => {
       <div className="menu-bar">
         <div className="menu-logo">
           <a href="/">
-            <img src="/images/logo-black.svg" alt="logo-scheffold" decoding="async" width={50} height={30} />
+            <img
+              src="/images/reck_logo.png"
+              alt="logo-scheffold"
+              decoding="async"
+              width={150}
+            />
           </a>
         </div>
         <div className="menu-open" onClick={toggleMenu}>
@@ -71,11 +76,16 @@ const Menu = () => {
       <div className="menu-overlay">
         {/* menu-overlay-bar */}
         <div className="menu-overlay-bar">
-        <div className="menu-logo">
-          <a href="/">
-            <img src="/images/scheffold-white.webp" alt="logo-scheffold" decoding="async" width={50} height={30}/>
-          </a>
-        </div>
+          <div className="menu-logo">
+            <a href="/">
+              <img
+                src="/images/reck_logo.png"
+                alt="logo-scheffold"
+                decoding="async"
+                width={150}
+              />
+            </a>
+          </div>
           <div className="menu-close">
             <p onClick={toggleMenu}>Close</p>
           </div>
@@ -97,14 +107,14 @@ const Menu = () => {
               </div>
             ))}
           </div>
-          
-            <div className="menu-info-col">
-              <p>info@vierdimensiona.com</p>
-              <p>+4931415515</p>
-            </div>
+
+          <div className="menu-info-col">
+            <p>info@vierdimensiona.com</p>
+            <p>+4931415515</p>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

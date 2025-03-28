@@ -14,23 +14,54 @@ const { section } = Astro.props;
 
 ---
 
-<div class="hero-section h-[70vh] w-full bg-red-400 flex flex-col justify-center items-center gap-5">
-    <h1>{section.headline}</h1>
-    <p>{section.subheadline}</p>
-    <button><a href="">{section.cta}</a></button>
-</div>
 
+<div class="hero-wrapper h-[80vh] min-w-[100vw] bg-black">
+   
+                <div class="hero-content container mx-auto px-[5%]">
+                    <h2 transition:name="fade">{section.headline}</h2>
+                    <p>{section.subheadline}</p>
+                    <a href="">
+                        <button class="btn">{section.cta}</button>
+                    </a>
+                </div>
+</div>
 
 <style>
 
-    h1 {
-        color: white;
+.hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        z-index: 2;
     }
 
-    p {
-        color: white;
+    .hero-content h2 {
+        font-size: 5vw;
+        line-height: 1.2;
     }
 
+    .hero-content p {
+        color: rgb(219, 219, 219);
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+
+    .hero-wrapper {
+        background-image: url("/images/flachdach-hero.jpg");
+        background-size: cover;
+    }
+
+   
+
+    @media screen and (max-width: 769px) {
+        .hero-content h2 {
+            font-size: 8vw;
+        }
+
+        .hero-content p {
+        
+        font-size: 18px;
+    }
+    }
 </style>
 
-<script src="../libs/slider_simple.js"></script>

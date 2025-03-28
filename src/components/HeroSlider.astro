@@ -17,34 +17,49 @@ const subheadline = heroData?.subheadline || "Standart-Subheadline";
 
 
 ---
-<div class="hero-wrapper h-[70vh] min-w-[100vw] bg-black">
+<div class="hero-wrapper h-[80vh] min-w-[100vw] bg-black">
     <div class="swiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide bg-green-500" id="slide-1" style={`background-image: url(${optimizedBackground.src});`}>
+            <div class="swiper-slide bg-green-500" id="slide-1">
                 <div class="hero-content container mx-auto px-[5%]">
-                    <h2 transition:name="fade">{headline}</h2>
-                    <p>Top Marken</p>
-                    <a href="" class="button">EINBLICK </a>
+                    <h2 transition:name="fade">Sanitär – Komfort & Funktion perfekt kombiniert.</h2>
+                    <p>Individuelle Sanitärlösungen für Ihr Zuhause – modern, effizient und auf höchstem Qualitätsniveau.</p>
+                    <a href="">
+                        <button class="btn">MEHR ERFAHREN</button>
+                    </a>
                 </div>
             </div>
-            <div class="swiper-slide bg-slate-500" id="slide-2" style={`background-image: url(${optimizedBackground2.src});`}>
-                <div class="hero-content">
-                    <h2>SEHEN, LIEBEN,<br /> ERLEBEN.</h2>
-                    <p>Top Marken</p>
-                    <a href="" class="button">EINBLICK </a>
+            <div class="swiper-slide bg-slate-500" id="slide-2" >
+                <div class="hero-content container mx-auto px-[5%]">
+                    <h2 transition:name="fade">Heizung & Lüftung – Effizient. Komfortabel. Nachhaltig.</h2>
+                    <p>TOptimale Wärme und frische Luft für Ihr Zuhause – mit energieeffizienten Heizungs- und Lüftungslösungen.</p>
+                    <a href="">
+                        <button class="btn">MEHR ERFAHREN</button>
+                    </a>
                 </div>
             </div>
-            <div class="swiper-slide bg-blue-500" id="slide-3" style={`background-image: url(${optimizedBackground3.src});`}>
-                <div class="hero-content">
-                    <h2>SEHEN, LIEBEN,<br /> ERLEBEN.</h2>
-                    <p>Top Marken</p>
-                    <a href="" class="button">EINBLICK </a>
+            <div class="swiper-slide bg-blue-500" id="slide-3">
+                <div class="hero-content container mx-auto px-[5%]">
+                    <h2 transition:name="fade">Gebäudetechnik – Effizient und intelligent.</h2>
+                    <p>Innovative Gebäudetechnik für nachhaltige, energieeffiziente und komfortable Lösungen in Ihrem Zuhause oder Unternehmen.</p>
+                    <a href="">
+                        <button class="btn">MEHR ERFAHREN</button>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide bg-blue-500" id="slide-4">
+                <div class="hero-content container mx-auto px-[5%]">
+                    <h2 transition:name="fade">Flachdach & Flaschnerei – Präzision und Langlebigkeit.</h2>
+                    <p>Hochwertige Flachdachlösungen und Flaschnerarbeiten für maximale Sicherheit und Haltbarkeit.</p>
+                    <a href="">
+                        <button class="btn">MEHR ERFAHREN</button>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="swiper-pagination"></div>
-        <!-- <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div> -->
+          <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div> 
     </div>
 </div>
 
@@ -90,10 +105,47 @@ const subheadline = heroData?.subheadline || "Standart-Subheadline";
     }
 
     .hero-content h2 {
-        font-size: 85px;
+        font-size: 5vw;
         line-height: 1.2;
     }
 
+    .hero-content p {
+        color: rgb(219, 219, 219);
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+
+    #slide-1 {
+        background-image: url("/images/hero-neu.webp");
+        background-size: cover;
+    }
+
+    #slide-2 {
+        background-image: url("/images/heizung-hero.jpg");
+        background-size: cover;
+    }
+
+    #slide-3 {
+        background-image: url("/images/technik-hero.jpg");
+        background-size: cover;
+    }
+
+    #slide-4 {
+        background-image: url("/images/flachdach-hero.jpg");
+        background-size: cover;
+    }
+
+
+    @media screen and (max-width: 769px) {
+        .hero-content h2 {
+            font-size: 8vw;
+        }
+
+        .hero-content p {
+        
+        font-size: 18px;
+    }
+    }
 
     
 

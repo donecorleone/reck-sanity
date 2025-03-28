@@ -41,11 +41,7 @@ const category = await getCategory(slug);
 
       <!-- Content Section -->
       <div class="content-section">
-        {(category.categoryBody &&
-          <div class="post-content mb-14">
-            <PortableText value={category.categoryBody} />
-          </div> || "Hello World"
-        )}
+        
         {(category.leistung) && category.leistung.length > 0 && (
           <div class="leistungen-section">
             <h2 class="mb-10">Unsere Leistungen</h2>
@@ -64,6 +60,11 @@ const category = await getCategory(slug);
               ))}
             </div>
           </div>
+        )}
+        {(category.categoryBody &&
+          <div class="post-content my-14">
+            <PortableText value={category.categoryBody} />
+          </div> || "Hello World"
         )}
       </div>
 
@@ -119,7 +120,7 @@ const category = await getCategory(slug);
     text-align: center;
     color: white;
     padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.4);
+    
     border-radius: 8px;
     max-width: 80%;
   }
@@ -172,7 +173,7 @@ const category = await getCategory(slug);
 
  
   h1 {
-    font-size: 8vw;
+    font-size: 5vw;
     line-height: 1;
   }
 
@@ -194,10 +195,14 @@ const category = await getCategory(slug);
   }
 
   ul {
-  list-style-type: square; /* Alternativen: disc, circle, none */
-  padding-left: 50px;
-  }
+  list-style-type: none; /* Bulletpoints entfernen */
+  padding-left: 20px; /* Abstände anpassen */
+}
 
+ul li::before {
+  content: "☑️"; /* Emoji als Bulletpoint */
+  margin-right: 10px; /* Abstand zwischen Emoji und Text */
+}
 
 
 
@@ -209,6 +214,10 @@ const category = await getCategory(slug);
 
     .hero-content {
       max-width: 90%;
+    }
+
+    h1 {
+      font-size: 10vw;
     }
   }
 </style>

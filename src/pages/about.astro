@@ -1,0 +1,39 @@
+---
+import { getIndexPage } from "../utils/sanity";
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import HeroSlider from "../components/HeroSlider.astro";
+import Info from "../components/Info.astro";
+import Bento from "../components/Bento.astro";
+import LogoSwipes from "../components/LogoSwipes.astro";
+import Feed from "../components/Feed.astro";
+import Category from "../components/Category.astro";
+import Testimonial from "../components/Testimonial.astro";
+import Card from "../ui/Card.astro";
+import LogoSlider from "../components/LogoSlider.astro";
+import Parallax from "../components/Parallax.astro";
+
+
+
+---
+
+<Layout title="Über Reck">
+  <div class="wrapper">
+    <main>
+      <HeroSlider />
+      <div class="container mx-auto px-[5%] py-[75px]">
+      <p>Bei Reck Haustechnik stehen Innovation, Effizienz und Nachhaltigkeit im Mittelpunkt unserer Arbeit. Als Experten für moderne Heizungs-, Lüftungs- und Gebäudetechnik bieten wir maßgeschneiderte Lösungen, die nicht nur den Komfort in Ihrem Zuhause verbessern, sondern auch aktiv zur Reduzierung des Energieverbrauchs und CO2-Ausstoßes beitragen.
+
+        Mit unserem umfassenden Fachwissen und einem klaren Fokus auf zukunftsweisende Technologien wie Gas- und Ölbrennwerttechnik, Wärmepumpen, Hybrid-Technik und Brennstoffzellenheizungen, bieten wir Ihnen intelligente und umweltfreundliche Lösungen für Ihr Gebäude. Unsere innovativen Wohnraumlüftungssysteme sorgen für ein gesundes Raumklima und senken gleichzeitig Ihre Heizkosten.
+        
+        Wir verstehen uns als Partner, der Sie bei der Planung, Umsetzung und Wartung Ihrer Haustechnik unterstützt. Dabei legen wir großen Wert auf eine enge Zusammenarbeit, um sicherzustellen, dass Ihre individuellen Bedürfnisse und Anforderungen optimal erfüllt werden. Vertrauen Sie auf unsere Expertise, um Ihr Gebäude effizient, nachhaltig und zukunftssicher zu gestalten.</p>
+        </div>
+      <LogoSlider />
+      <Category />
+      <Parallax />
+      <Testimonial />
+      
+      
+    </main>
+  </div>
+</Layout>

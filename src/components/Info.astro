@@ -28,14 +28,21 @@ const { section } = Astro.props;
     margin-bottom: 20px;
   }
 
+  h1 {
+    font-size: 50px;
+  }
+
 
  .post-content p {
   font-size: 18px;
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 769px) {
+      h1 {
+        font-size: 40px;
+      }
+}
+
 </style>
 
-<script>
-
-</script>

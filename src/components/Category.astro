@@ -8,59 +8,65 @@ import type { Category} from "../utils/sanity";
 const categoriesData = await getCategories();
 ---
 
-<div class="category-section container mx-auto h-fit p-[5%]">
+<!-- <div class="category-section container mx-auto h-fit p-[5%]">
   {categoriesData.map((category) => (
-    <a href={`/leistungen/${category.slug.current}`}>
-      <div class="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-  <div class="px-4 py-2">
+    <div class="category-container mb-5">
+      <a href={`/leistungen/${category.slug.current}`}>
+      
+  <div class="px-4 py-2 h-[100px]">
       <h3 class="text-xl font-bold text-gray-800 uppercase dark:text-white">{category?.title}</h3>
   </div>
 
   {category.imgUrl && <img src={urlFor(category.imgUrl).url()} alt={category.title} class="object-cover w-full h-48 mt-2" width="1920" height="1440" decoding="async" loading="lazy" />}
 </div>
     </a>
+    
+  ))}
+</div>  -->
+
+
+  
+<div class="category-section container mx-auto h-fit p-[5%]">
+  {categoriesData.map((category) => (
+    <a href={`/leistungen/${category.slug.current}`}>
+      <div class="category-container flex flex-col justify-center items-center">
+      {category.imgUrl && <img src={urlFor(category.imgUrl).url()} alt={category.title} class="object-cover w-full h-48 mt-2" width="1920" height="1440" decoding="async" loading="lazy" />}
+      <div class="px-4 py-2 text-center h-[100px]">
+          <h3 class="text-xl font-bold text-gray-800 uppercase dark:text-white">{category?.title}</h3>
+      </div>
+    </div>
+    </a>
   ))}
 </div> 
 
 
   
-</div>
+
 
 
 <style>
  .category-section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem; 
+  gap: 30px; 
   place-items: center; 
 }
+
+.category-container{
+  max-width: 350px;
+}
   
-  .category-container {
-    text-align: center;
-    transition: transform 0.2s ease;
-    max-width: 300px;
-    overflow: hidden;
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 5px );
-    -webkit-backdrop-filter: blur( 5px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-  }
-
-  .category-container:hover {
-    transform: translateY(-5px); /* Hover-Effekt */
-  }
-
+ 
   .category-container img {
     width: 100%;
     height: auto;
+    min-height: 250px;
    
   }
 
   h3 {
     font-size: 18px;
-    font-weight: 800;
+    font-weight: 500;
     letter-spacing: 2.5px;
     color: #000;
     padding-top: 15px;
@@ -78,3 +84,4 @@ const categoriesData = await getCategories();
 
 
 </style>
+

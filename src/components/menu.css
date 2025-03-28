@@ -1,10 +1,10 @@
 .menu-bar,
 .menu-overlay-bar {
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 2% 20px 2%;
+  padding: 10px 5% 20px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,15 +14,16 @@
 .menu-bar a,
 .menu-open p {
   mix-blend-mode: difference;
-  color: #000;
+  color: rgb(198, 198, 198);
+  mix-blend-mode: difference;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 28px;
 }
 
 .menu-close p {
-  color: #fff;
+  color: #2b3b6c;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 28px;
 }
 
 .menu-overlay {
@@ -32,7 +33,7 @@
   width: 100%;
   height: 100vh;
   padding: 2em;
-  background: #000;
+  background: #ead703;
   z-index: 100;
   display: flex;
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
@@ -43,7 +44,6 @@
   display: flex;
   align-items: flex-end;
   cursor: pointer;
-
 }
 
 .menu-copy {
@@ -63,9 +63,9 @@
 
 .menu-close-icon p {
   font-size: 100px;
-  -webkit-text-stroke: 3px #c5fb45;
+  -webkit-text-stroke: 3px #2b3b6c;
   line-height: 70%;
-  color: black;
+  color: #2b3b6c;
 }
 
 .menu-link-item {
@@ -75,18 +75,20 @@
 
 .menu-link-item-holder {
   position: relative;
+  margin-bottom: 20px;
 }
 
 .menu-link-item-holder a {
-  color: #fff;
-  font-size: 80px;
+  color: #2b3b6c;
+  font-size: 70px;
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 85%;
+  margin-bottom: 50px;
 }
 
 .menu-link {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .menu-info {
@@ -98,13 +100,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  color: #fff;
+  color: #2b3b6c;
 }
 
 .menu-logo a img {
-    max-height: 40px;
-    mix-blend-mode: difference;
-    color: #fff;
+  max-height: 40px;
+  mix-blend-mode: difference;
+  color: #2b3b6c;
 }
 
 @media (max-width: 900px) {
@@ -117,7 +119,7 @@
   }
 
   .menu-link-item-holder a {
-    font-size: 60px;
+    font-size: 32px;
   }
 
   .menu-bar,

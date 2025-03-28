@@ -25,7 +25,9 @@ const page = await getIndexPage();
       <LogoSlider />
       {page.info && <Info section={page.info} />} 
       <Category />
-      <Parallax />
+      <div class="hidden md:block">
+        <Parallax />
+      </div>
       <Testimonial />
       <ContactForm />
       

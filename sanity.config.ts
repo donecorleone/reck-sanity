@@ -17,9 +17,17 @@ export default defineConfig({
           .items([
             ...S.documentTypeListItems().filter(
               (listItem) =>
-                !["header", "slider", "info", "event", "artist"].includes(
-                  listItem.getId() as string
-                )
+                ![
+                  "header",
+                  "slider",
+                  "info",
+                  "event",
+                  "artist",
+                  "page",
+                  "post",
+                  "hero",
+                  "service",
+                ].includes(listItem.getId() as string)
             ),
           ]),
     }),

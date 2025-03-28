@@ -14,16 +14,16 @@
 .menu-bar a,
 .menu-open p {
   mix-blend-mode: difference;
-  color: rgb(198, 198, 198);
+  color: #2b3b6c;
   mix-blend-mode: difference;
   cursor: pointer;
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .menu-close p {
   color: #2b3b6c;
   cursor: pointer;
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .menu-overlay {
@@ -75,12 +75,12 @@
 
 .menu-link-item-holder {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .menu-link-item-holder a {
   color: #2b3b6c;
-  font-size: 70px;
+  font-size: 45px;
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 85%;

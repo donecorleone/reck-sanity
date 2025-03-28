@@ -6,10 +6,10 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const menuLinks = [
-  { path: "/about", label: "Über Reck" },
+  { path: "/about", label: "Reck Haustechnik" },
   { path: "/leistungen/sanitaer", label: "Sanitär" },
   { path: "/leistungen/heizung", label: "Heizung" },
-  { path: "/leistungen/bower-door-messung", label: "Bower Door Messung" },
+  { path: "/leistungen/blower-door-messung", label: "Blower Door Messung" },
   { path: "/leistungen/flaschner", label: "Flaschner" },
   { path: "/leistungen/gebaeudetechnik", label: "Gebäudetechnik" },
 ];
@@ -67,7 +67,7 @@ const Menu = () => {
             />
           </a>
         </div>
-        <div className="menu-open" onClick={toggleMenu}>
+        <div className="menu-open px-2 py-1" onClick={toggleMenu}>
           <p>Menu</p>
         </div>
       </div>

@@ -1,5 +1,5 @@
 ---
-import { getIndexPage } from "../utils/sanity";
+
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import HeroSlider from "../components/HeroSlider.astro";
@@ -15,21 +15,16 @@ import Parallax from "../components/Parallax.astro";
 import ContactForm from "../components/ContactForm.astro";
 
 
-const page = await getIndexPage(); 
 ---
 
-<Layout title="Startseite">
-  <div class="wrapper">
-    <main>
-      {page.hero && <HeroSlider section={page.hero} />}
-      <LogoSlider />
-      {page.info && <Info section={page.info} />} 
-      <Category />
-      <Parallax />
-      <Testimonial />
-      <ContactForm />
-      
-      
-    </main>
-  </div>
-</Layout>
+<Layout title="Kontakt">
+    <div class="wrapper">
+      <main>
+        
+        <ContactForm />
+        
+        
+      </main>
+    </div>
+  </Layout>
+  

@@ -109,8 +109,8 @@ const Menu = () => {
           </div>
 
           <div className="menu-info-col">
-            <p>info@vierdimensiona.com</p>
-            <p>+4931415515</p>
+            <p>kley@hans-peter-reck.de</p>
+            <p>T 07371 5100</p>
           </div>
         </div>
       </div>

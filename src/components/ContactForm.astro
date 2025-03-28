@@ -1,0 +1,223 @@
+---
+
+---
+
+<div class="container grid mx-auto place-items-center my-[130px] px-[30px] lg:px-0" id="contact">
+    <h2 class="mb-[20px] lg:w-[80%] text-center uppercase font-light">Noch mehr Fragen?</h2>
+    <p class="mb-[35px] lg:mb-[75px] text-gray-700 text-center">Dann kontaktieren Sie uns.</p>
+    
+    <div class="wrapper w-full lg:flex lg:flex-row-reverse gap-8 lg:gap-12">
+        <div class="form-container lg:w-[70%] flex flex-col justify-center lg:justify-start h-fit mb-8">
+            
+            <h3 class="mb-10 lg:pr-[30px] text-black text-center lg:text-left">SCHREIBEN SIE UNS</h3>
+            <form method="POST" id="form" class="w-full">
+                <div class="flex flex-col lg:flex-row gap-4">
+                <div class="flex-1">
+                <input type="hidden" name="access_key" value="access key eingeben"> 
+
+                <div class="mb-4">
+                    <label class="block text-black font-light mb-5" for="name"><p>Vor- und Nachname<br /></p>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        id="name" 
+                        required 
+                        class="w-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2B3B6C]"
+                    >
+                </label>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-black font-light mb-5" for="email"><p>E-Mail</p>
+                  <input 
+                        type="email" 
+                        name="email" 
+                        id="email" 
+                        required 
+                        class="w-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2B3B6C]"
+                    >
+                </label>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-light mb-5" for="phone"><p>Telefonnummer</p>
+                    <input 
+                        type="text" 
+                        name="phone" 
+                        id="phone" 
+                        required 
+                        class="w-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2B3B6C]"
+                    >
+                </label>
+                </div>
+            </div>
+
+                <div class="mb-4 flex-1">
+                    <label class="block text-gray-700 font-light mb-5" for="message"><p>Ihre Nachricht</p>
+                        <textarea name="message" required class="w-full px-4 py-3 bg-[#dfdfdf47] focus:outline-none focus:ring-2 focus:ring-[#2B3B6C]"></textarea>
+                </label>
+                </div>
+                </div>
+
+                <p class="mb-3 lg:mb-[40px] privacy-text">Wir verarbeiten deine Daten gemäß unserer <a href="/datenschutz" class="font-light">Datenschutzerklärung</a>, dort Ziffer 4. Pflichtfelder sind mit einem * gekennzeichnet.</p>
+
+                <button 
+                    type="submit" 
+                    class="btn btn-primary my-3 mt-5"
+                >
+                    <span>SENDEN</span> 
+                </button>
+
+                <div id="result" class="mt-4 text-center text-sm text-gray-600"></div>
+            </form>
+        </div>
+        
+        <div class="contact-container lg:w-[30%] flex flex-col md:flex-row lg:flex-col gap-5 text-left">
+            <div class="md:mr-24 lg:mr-0 mb-[40px] md:mb-0">
+                <h3 class="uppercase mb-[15px]">Kontakt</h3>
+                <p class="font-thin text-black mb-[15px]" >
+                    Reck Haustechnik GmbH <br />
+                    Im Brühl 12<br />
+                    88521 Ertingen-Binzwangen
+                </p>
+                <p class="flex flex-col">
+                    <a href="">T 07371 5100</a>
+                    <a href="">M 0172 6262459</a>
+                    <a href="">kley@hans-peter-reck.de</a>
+                </p>
+            </div>
+            <div>
+            <h3 class="uppercase mt-[15px] mb-[15px] md:mt-0">Öffnungszeiten</h3>
+            <p class="day mb-[20px]">
+                Montag - Freitag <br />
+                <span class="font-extralight">
+                    9:30 - 18.00 Uhr
+                </span>
+            </p>
+        </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    h2 {
+        font-size: 50px;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: 300;
+    }
+    p {
+        font-size: 18px;
+        font-weight: 300;
+        color: black;
+    }
+
+    .contact-container p {
+        font-weight: 200;
+    }
+
+    .social img {
+        height: auto;
+        width: 45px;
+        object-fit: contain;
+    }
+
+  
+
+    input {
+        height: 56px;
+        /* width: 350px; */
+        border-radius: 0 15px 15px 15px;
+        background-color: #DFDBCB78;
+        border: 0;
+    }
+
+    textarea {
+        border-radius: 0 15px 15px 15px;
+        background-color: #DFDBCB78;
+        border: 0;
+        /* width: 350px; */
+    }
+
+    a {
+        color: #2B3B6C;
+        font-weight: 300;
+    }
+    
+    .day {
+        font-weight: 300 !important;
+    }
+
+    .privacy-text {
+        font-weight: 200;
+    }
+
+    @media screen and (max-width: 769px) {
+            
+        h2 {
+            font-size: 30px;
+        }
+
+            p {
+                font-size: 18px;
+            }
+
+            label {
+                text-align: center;
+            }
+
+            label p {
+                padding-bottom: 20px;
+            }
+    }
+        
+</style>
+
+<script is:inline>
+const form = document.getElementById('form');
+const result = document.getElementById('result');
+
+form.addEventListener('submit', function(e) {
+    const formData = new FormData(form);
+    e.preventDefault();
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    result.innerHTML = "Senden...";
+    result.style.display = "block";
+
+    fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status === 200) {
+                result.innerHTML = "Vielen Dank für Deine Nachricht, wir werden uns so schnell wie möglich mit dir in Verbindung setzen.";
+            } else {
+                console.log(response);
+                result.innerHTML = json.message;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.innerHTML = "Etwas ist schiefgelaufen! Bitte versuche es später erneut.";
+        })
+        .then(function() {
+            form.reset();
+            setTimeout(() => {
+                result.style.display = "none";
+            }, 3000);
+        });
+});
+
+</script>

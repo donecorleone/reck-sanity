@@ -60,6 +60,11 @@ export async function getPage(slug: string): Promise<Page> {
           infoBody,
           cta,
           "infoImageUrl": infoImage.asset->url,
+
+          // Categorie-Section
+          
+
+
   }
       }
     `,
